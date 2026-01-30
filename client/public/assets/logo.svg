@@ -1,0 +1,12 @@
+<svg width="250" height="60" viewBox="0 0 250 60" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="30" cy="30" r="25" fill="#FF6B00" />
+  <path d="M20 40L30 15L40 40M24 33H36" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <text x="65" y="38" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#1A365D">
+    Aivery<tspan fill="#FF6B00">.one</tspan>
+  </text>
+  
+  <text x="65" y="52" font-family="Arial, sans-serif" font-size="10" fill="#4A5568">
+    Every AI, for everyone.
+  </text>
+</svg>
