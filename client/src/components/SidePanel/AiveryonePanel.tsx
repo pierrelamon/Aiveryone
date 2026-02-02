@@ -1,11 +1,7 @@
 import React from 'react';
 
 const AiveryonePanel = () => {
-  const videos = [
-    { t: "C'est quoi l'IA ?", u: "https://youtube.com/watch?v=cX9V3iNBUoo" },
-    { t: "Le secret d'un bon Prompt", u: "https://www.youtube.com/watch?v=YcIbZGTRMjI" },
-    { t: "Attention aux Hallucinations", u: "https://www.youtube.com/watch?v=0xS3-g8fCOI" }
-  ];
+  const videos = [];
 
   return (
     <div className="p-4 bg-background-secondary border-b border-border-medium flex flex-col gap-4">
@@ -49,9 +45,6 @@ const AiveryonePanel = () => {
         <h2 className="text-[10px] font-black tracking-[0.3em] text-text-secondary uppercase mb-4">
           AIVERY.ONE
         </h2>
-        <h3 className="text-sm font-bold text-text-primary mb-3">
-          60 secondes pour apprendre
-        </h3>
       </div>
 
       <div className="flex flex-col gap-2">
