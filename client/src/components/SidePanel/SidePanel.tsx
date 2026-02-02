@@ -11,7 +11,7 @@ import NavToggle from '~/components/Nav/NavToggle';
 import { useSidePanelContext } from '~/Providers';
 import { cn } from '~/utils';
 import Nav from './Nav';
-import Airveryone from './AirveryonePanel';
+import AiveryonePanel from './AiveryonePanel';
 
 const defaultMinSize = 20;
 
@@ -182,7 +182,7 @@ const SidePanel = ({
         )}
       >
         {/* AiveryOnePanel INCLUDE  */}
-        {!isCollapsed && <Airveryone />}
+        {!isCollapsed && <Aiveryone />}
         
         {/* AiveryOne AJOUTS DIRECTS */}
       {!isCollapsed && (
