@@ -180,6 +180,14 @@ const SidePanel = ({
             : 'opacity-100',
         )}
       >
+        {/* TON AJOUT ICI */}
+      {!isCollapsed && (
+        <div className="mx-2 my-2 rounded-md bg-surface-hover p-2 border border-border-light">
+          <p className="text-[11px] text-text-secondary">
+            💡 <strong>Conseil AiveryOne :</strong> Utilisez Maj + Entrée pour passer à la ligne.
+          </p>
+        </div>
+      )}
         <Nav
           resize={panelRef.current?.resize}
           isCollapsed={isCollapsed}
