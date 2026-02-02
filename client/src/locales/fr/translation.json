@@ -1043,7 +1043,7 @@
   "com_ui_prompt_text": "Texte",
   "com_ui_prompt_text_required": "Un texte est requis",
   "com_ui_prompt_update_error": "Une erreur s'est produite lors de la mise à jour du prompt",
-  "com_ui_prompts": "Prompts",
+  "com_ui_prompts": "Piloter l'IA en 1 clic",
   "com_ui_prompts_allow_create": "Autoriser la création de Prompts",
   "com_ui_prompts_allow_share": "Autoriser le partage de prompts",
   "com_ui_prompts_allow_use": "Autoriser l'utilisation de Prompts",
