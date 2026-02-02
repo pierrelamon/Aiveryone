@@ -27,12 +27,6 @@ const AiveryonePanel = () => {
           opacity: 0.9;
           transform: translateY(-1px);
         }
-        /* 1. Cache l'onglet Paramètres dans la liste de navigation */
-  a[href*="/settings"], 
-  button[aria-label*="Paramètres"],
-  button[aria-label*="Settings"] {
-    display: none !important;
-  }
       `}</style>
 
       <div className="text-center">
