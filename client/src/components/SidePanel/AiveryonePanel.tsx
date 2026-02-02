@@ -1,150 +1,51 @@
 import React from 'react';
+import { useChatContext } from 'librechat-data-provider';
+import { cn } from '~/utils'; // On utilise leur outil de style pour être raccord
 
 const AiveryonePanel = () => {
+  const { setText } = useChatContext();
+
+  const prompts = [
+    { label: "Vérifie ta réponse", text: "Peux-tu vérifier ta réponse précédente ? Assure-toi qu'il n'y a pas d'erreur et que c'est bien concret." },
+    { label: "Méthode 5W (Qui, Quoi...)", text: "Applique la méthode QQOQCCP pour analyser ce sujet." },
+    { label: "Aide-moi à compléter", text: "Voici mon début de prompt : [TEXTE]. Aide-moi à le rendre plus efficace." },
+    { label: "Rends ça plus simple", text: "Réécris ton explication précédente pour qu'elle soit compréhensible par un débutant total." },
+    { label: "Sors un tableau", text: "Présente les informations précédentes sous la forme d'un tableau comparatif." }
+  ];
+
+  const handleAction = (promptText: string) => {
+    if (setText) {
+      setText(promptText);
+      // Le fameux focus automatique
+      setTimeout(() => {
+        const textarea = document.getElementById('prompt-textarea');
+        textarea?.focus();
+      }, 50);
+    }
+  };
+
   return (
-    <div className="aivery-container">
-      <style>{`
-        .aivery-container {
-          --primary-blue: #0055ff;
-          --light-blue: #dbeafe;
-          --text-dark: #ececec;
-          --bg-card: #2f2f2f; /* Couleur adaptée au mode sombre LibreChat */
-          --yt-red: #FF0000;
-          
-          padding: 14px;
-          background: transparent;
-          width: 100%;
-          font-family: -apple-system, sans-serif;
-        }
-
-        .aivery-logo {
-          display: flex;
-          justify-content: center;
-          margin-bottom: 20px;
-        }
-
-        .aivery-logo h1 {
-          font-size: 1.1rem;
-          font-weight: 900;
-          letter-spacing: 0.2em;
-          color: var(--text-dark);
-        }
-
-        /* --- Liste des Boutons --- */
-        .prompts-list {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .btn-main {
-          background-color: var(--primary-blue);
-          color: white;
-          border: none;
-          border-radius: 12px;
-          padding: 12px 16px;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          font-size: 0.9rem;
-          text-align: left;
-          width: 100%;
-          cursor: pointer;
-          transition: transform 0.1s ease, background-color 0.2s ease;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-main:hover {
-          background-color: #0044cc;
-          transform: translateY(-1px);
-        }
-
-        .btn-main svg {
-          width: 18px;
-          height: 18px;
-          stroke: currentColor;
-          fill: none;
-          stroke-width: 2.5;
-        }
-
-        /* --- Vidéos --- */
-        .video-section {
-          margin-top: 25px;
-          border-top: 1px solid rgba(255,255,255,0.1);
-          padding-top: 15px;
-        }
-
-        .video-section h3 {
-          font-size: 0.8rem;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          margin-bottom: 12px;
-          color: #888;
-        }
-
-        .btn-video {
-          background-color: var(--yt-red);
-          color: white;
-          border: none;
-          border-radius: 10px;
-          padding: 8px 12px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          text-decoration: none;
-          font-size: 0.85rem;
-          margin-bottom: 8px;
-        }
-
-        .btn-video svg {
-          fill: white;
-          width: 16px;
-          height: 16px;
-        }
-      `}</style>
-
-      <div className="aivery-logo">
-        <h1>AIVERY.ONE</h1>
+    <div className="flex flex-col gap-3 p-4 border-b border-border-medium bg-background-secondary">
+      <div className="flex justify-center mb-2">
+        <h2 className="text-xs font-black tracking-[0.2em] text-text-primary uppercase">
+          AIVERY.ONE
+        </h2>
       </div>
 
-      <div className="prompts-list">
-        {/* Bouton 1 */}
-        <button className="btn-main">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="9 11 12 14 22 4"/></svg>
-          <span>Vérifie ta réponse</span>
-        </button>
-
-        {/* Bouton 2 */}
-        <button className="btn-main">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <span>Méthode 5W (Qui, Quoi...)</span>
-        </button>
-
-        {/* Bouton 3 */}
-        <button className="btn-main">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="9 11 12 14 22 4"/></svg>
-          <span>Aide-moi à compléter</span>
-        </button>
-
-        {/* Bouton 4 */}
-        <button className="btn-main">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          <span>Rends la réponse plus simple</span>
-        </button>
-
-        {/* Bouton 5 */}
-        <button className="btn-main">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
-          <span>Sors un tableau</span>
-        </button>
-      </div>
-
-      <div className="video-section">
-        <h3>60 secondes pour apprendre</h3>
-        <a href="https://youtube.com" target="_blank" rel="noreferrer" className="btn-video">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          <span>Le secret d'un bon Prompt</span>
-        </a>
+      <div className="flex flex-col gap-2">
+        {prompts.map((p, i) => (
+          <button
+            key={i}
+            onClick={() => handleAction(p.text)}
+            className={cn(
+              "flex items-center gap-3 px-4 py-3 text-sm font-medium text-white",
+              "bg-blue-600 hover:bg-blue-700 rounded-xl transition-all shadow-sm active:scale-95"
+            )}
+          >
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            {p.label}
+          </button>
+        ))}
       </div>
     </div>
   );
