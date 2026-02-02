@@ -9,17 +9,6 @@ import { useGetStartupConfig } from '~/data-provider';
 import { useLocalize, useHasAccess } from '~/hooks';
 import { cn } from '~/utils';
 
-const AIVERY_VERIFY_GROUP = {
-  _id: 'aivery-verify-2',
-  name: 'Vérifier 2',
-  category: 'Writing', // Correspond à l'icône "Stylo"
-  prompts: [
-    {
-      name: 'Vérifier 2',
-      prompt: 'Peux-tu vérifier ta réponse précédente pour détecter des erreurs ou contradictions ? Sois critique.',
-    },
-  ],
-} as TPromptGroup;
 
 export default function List({
   groups = [],
@@ -83,28 +72,11 @@ export default function List({
               </p>
             </div>
           )}
-          {/* ... lignes précédentes du fichier ... */}
+         
 
 <div className="overflow-y-auto overflow-x-hidden">
-  {/* Squelettes de chargement existants... */}
+  
 
-  {/* --- DÉBUT DE L'INJECTION AIVERYONE --- */}
-  {!isLoading && (
-    isChatRoute ? (
-      <ChatGroupItem
-        key={AIVERY_VERIFY_GROUP._id}
-        group={AIVERY_VERIFY_GROUP}
-        instanceProjectId={instanceProjectId}
-      />
-    ) : (
-      <DashGroupItem 
-        key={AIVERY_VERIFY_GROUP._id} 
-        group={AIVERY_VERIFY_GROUP} 
-        instanceProjectId={instanceProjectId} 
-      />
-    )
-  )}
-  {/* --- FIN DE L'INJECTION AIVERYONE --- */}
 
           {groups.map((group) => {
             if (isChatRoute) {
