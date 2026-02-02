@@ -182,7 +182,7 @@ const SidePanel = ({
         )}
       >
         {/* AiveryOnePanel INCLUDE  */}
-        {!isCollapsed && <Aiveryone />}
+        {!isCollapsed && <AiveryonePanel />}
         
         {/* AiveryOne AJOUTS DIRECTS */}
       {!isCollapsed && (
