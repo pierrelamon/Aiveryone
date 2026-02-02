@@ -11,6 +11,7 @@ import NavToggle from '~/components/Nav/NavToggle';
 import { useSidePanelContext } from '~/Providers';
 import { cn } from '~/utils';
 import Nav from './Nav';
+import Airveryone from './AirveryonePanel';
 
 const defaultMinSize = 20;
 
@@ -180,7 +181,10 @@ const SidePanel = ({
             : 'opacity-100',
         )}
       >
-        {/* TON AJOUT ICI */}
+        {/* AiveryOnePanel INCLUDE  */}
+        {!isCollapsed && <Airveryone />}
+        
+        {/* AiveryOne AJOUTS DIRECTS */}
       {!isCollapsed && (
         <div className="mx-2 my-2 rounded-md bg-surface-hover p-2 border border-border-light">
           <p className="text-[11px] text-text-secondary">
