@@ -158,7 +158,7 @@ export default function Parameters() {
             rest.options = bedrockRegions;
           }
 // Ajout d un return null pour aiveryone temporairement
-      return null;
+    //  return null;
           return (
             <Component
               key={key}
