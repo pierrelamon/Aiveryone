@@ -1,49 +1,49 @@
 import React from 'react';
-import { useChatContext } from 'librechat-data-provider';
-import { cn } from '~/utils'; // On utilise leur outil de style pour être raccord
+import { useChatContext } from '~/hooks'; 
+import { cn } from '~/utils';
+import { EarthIcon, Zap } from 'lucide-react'; // Utilise les icônes de leur bibliothèque
 
 const AiveryonePanel = () => {
-  const { setText } = useChatContext();
+  const { setText } = useChatContext() || {};
 
   const prompts = [
-    { label: "Vérifie ta réponse", text: "Peux-tu vérifier ta réponse précédente ? Assure-toi qu'il n'y a pas d'erreur et que c'est bien concret." },
+    { label: "Vérifie ta réponse", text: "Vérifie ta réponse précédente pour détecter d'éventuelles erreurs." },
     { label: "Méthode 5W (Qui, Quoi...)", text: "Applique la méthode QQOQCCP pour analyser ce sujet." },
-    { label: "Aide-moi à compléter", text: "Voici mon début de prompt : [TEXTE]. Aide-moi à le rendre plus efficace." },
-    { label: "Rends ça plus simple", text: "Réécris ton explication précédente pour qu'elle soit compréhensible par un débutant total." },
     { label: "Sors un tableau", text: "Présente les informations précédentes sous la forme d'un tableau comparatif." }
   ];
 
   const handleAction = (promptText: string) => {
     if (setText) {
       setText(promptText);
-      // Le fameux focus automatique
-      setTimeout(() => {
-        const textarea = document.getElementById('prompt-textarea');
-        textarea?.focus();
-      }, 50);
+      setTimeout(() => document.getElementById('prompt-textarea')?.focus(), 50);
     }
   };
 
   return (
-    <div className="flex flex-col gap-3 p-4 border-b border-border-medium bg-background-secondary">
-      <div className="flex justify-center mb-2">
-        <h2 className="text-xs font-black tracking-[0.2em] text-text-primary uppercase">
-          AIVERY.ONE
-        </h2>
+    <div className="flex flex-col gap-1 p-2 bg-background-secondary border-b border-border-medium">
+      {/* Header style "LibreChat" */}
+      <div className="flex items-center gap-2 px-2 py-1 mb-1">
+        <Zap className="w-3 h-3 text-blue-500" />
+        <span className="text-[10px] font-bold tracking-widest uppercase text-text-secondary">
+          AIVERY.ONE PRIORITÉS
+        </span>
       </div>
 
-      <div className="flex flex-col gap-2">
+      {/* Liste de boutons imitant DashGroupItem.tsx */}
+      <div className="flex flex-col gap-1">
         {prompts.map((p, i) => (
           <button
             key={i}
             onClick={() => handleAction(p.text)}
             className={cn(
-              "flex items-center gap-3 px-4 py-3 text-sm font-medium text-white",
-              "bg-blue-600 hover:bg-blue-700 rounded-xl transition-all shadow-sm active:scale-95"
+              "group flex items-center gap-3 px-3 py-2 text-sm text-text-primary",
+              "hover:bg-surface-hover rounded-lg transition-colors border border-transparent hover:border-border-light text-left"
             )}
           >
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            {p.label}
+            <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-md bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+              <EarthIcon size={16} />
+            </div>
+            <span className="font-medium truncate">{p.label}</span>
           </button>
         ))}
       </div>
