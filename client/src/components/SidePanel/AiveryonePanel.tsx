@@ -27,6 +27,22 @@ const AiveryonePanel = () => {
           opacity: 0.9;
           transform: translateY(-1px);
         }
+        /* 2. LE SCALPEL AIVERYONE : NETTOYAGE DU SIDE PANEL */
+
+        /* Masque Paramètres (Icône Settings2) */
+        button:has(.lucide-settings2) { display: none !important; }
+
+        /* Masque Signets (Icône Bookmark) */
+        button:has(.lucide-bookmark) { display: none !important; }
+
+        /* Masque Joindre des fichiers (Cible le tracé SVG spécifique du trombone) */
+        button:has(path[d*="M9 7C9 4.23858"]) { display: none !important; }
+
+        /* 3. OPTIONNEL : ON AÈRE LE BOUTON PROMPTS */
+        button:has(.lucide-message-square-quote) {
+          margin-top: 4px !important;
+          border-color: rgba(255, 0, 0, 0.2) !important; /* Petit rappel rouge discret */
+        }
       `}</style>
 
       <div className="text-center">
@@ -44,7 +60,7 @@ const AiveryonePanel = () => {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
               <path d="M8 5v14l11-7z"/>
             </svg>
-            <span>{v.t}</span>
+            span className="truncate">{v.t}</span>
           </a>
         ))}
       </div>
