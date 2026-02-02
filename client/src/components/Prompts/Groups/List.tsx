@@ -72,13 +72,7 @@ export default function List({
               </p>
             </div>
           )}
-         
-
-<div className="overflow-y-auto overflow-x-hidden">
-  
-
-
-          {groups.map((group) => {
+           {groups.map((group) => {
             if (isChatRoute) {
               return (
                 <ChatGroupItem
